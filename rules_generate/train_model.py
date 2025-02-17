@@ -14,6 +14,7 @@ csv = pd.read_csv(DATA_PATH)
 ## Consult ChatGPT 
 ## This combines all the tracks corresponding to the
 itemSetList = csv.groupby('pid')['track_name'].apply(lambda x: list(set(x))).tolist()
+print(f"len playlist: {len(itemSetList)}")
 
 print(f"Running FP Growth Algorithm using Min Sup Ratio {MIN_SUP_RATIO} and Min Conf {MIN_CONF}")
 time_start = time.time()
