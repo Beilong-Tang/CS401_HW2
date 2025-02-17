@@ -18,7 +18,7 @@ print(f"len playlist: {len(itemSetList)}")
 
 print(f"Running FP Growth Algorithm using Min Sup Ratio {MIN_SUP_RATIO} and Min Conf {MIN_CONF}")
 time_start = time.time()
-freqItemSet, rules = fpgrowth(itemSetList, minSupRatio=0.1, minConf=0.5)
+freqItemSet, rules = fpgrowth(itemSetList, minSupRatio=MIN_SUP_RATIO, minConf=MIN_CONF)
 time_finish = time.time() - time_start
 print(f"Finished FP Growth with time {str(timedelta(seconds=int(time_finish)))}")
 
