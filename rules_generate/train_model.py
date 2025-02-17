@@ -23,9 +23,9 @@ print(f"Finished FP Growth with time {str(timedelta(seconds=int(time_finish)))}"
 
 
 ## Save them to the ckpt
-with open(f"ckpt/sup_{MIN_SUP_RATIO}_conf_{MIN_CONF}_freq.ckpt", "r") as file: 
+with open(f"ckpt/sup_{MIN_SUP_RATIO}_conf_{MIN_CONF}_freq.ckpt", "wb") as file: 
     pickle.dump(freqItemSet, file)
 
 
-with open(f"ckpt/sup_{MIN_SUP_RATIO}_conf_{MIN_CONF}_rules.ckpt", "r") as file: 
+with open(f"ckpt/sup_{MIN_SUP_RATIO}_conf_{MIN_CONF}_rules.ckpt", "wb") as file: 
     pickle.dump(rules, file)
