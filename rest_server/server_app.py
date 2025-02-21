@@ -44,9 +44,7 @@ app.model = Model("/ml_data/sup_0.025_conf_0.7_rules.ckpt")
 def recommend():
     value = request.get_json()
     res = app.model(value['songs'])
-    with open("/ml_data/test.html", "r") as file:
-        res = file.read()
-    return jsonify({"recommend": res, "webpage": res })
+    return jsonify({"recommend": res})
 
 if __name__ == "__main__":
     app.run(host='0.0.0.0',port=52006)
