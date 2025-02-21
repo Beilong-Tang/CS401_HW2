@@ -38,7 +38,7 @@ class Model:
         return list(random.choice(self.model)[1])
 
 app = Flask(__name__)
-app.model = Model("/ml_data/sup_0.025_conf_0.7_rules.ckpt")
+app.model = Model("/ml_data/model.ckpt")
 app.version = os.getenv("APP_VERSION", "unknown")
 
 @app.route("/api/recommender", methods=["POST"])
