@@ -47,5 +47,7 @@ COPY . .
 # Expose the port that the application listens on.
 EXPOSE 52006
 
+ENV APP_VERSION=0.01
+
 # Run the application.
 CMD python3 server_app.py
