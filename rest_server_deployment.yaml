@@ -17,4 +17,4 @@ spec:
       - name: playlist-recommender
         image: beilongtang/playlists-recommender-system:0.1
         ports:
-        - containerPort: 5008
+        - containerPort: 52006
