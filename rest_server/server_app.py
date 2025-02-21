@@ -37,14 +37,22 @@ class Model:
         return list(random.choice(self.model)[1])
 
 app = Flask(__name__)
-app.model = Model("/ml_data/model.ckpt")
-app.modified = os.path.getmtime("/ml_data/model.ckpt")
+
+MODEL_CKPT = "/ml_data/model.ckpt"
+
+app.model = Model(MODEL_CKPT)
+app.modified = os.path.getmtime(MODEL_CKPT)
 app.version = os.getenv("APP_VERSION", "unknown")
 
 @app.route("/api/recommender", methods=["POST"])
 def recommend():
     value = request.get_json()
     res = app.model(value['songs'])
+    modified = os.path.getmtime(MODEL_CKPT)
+    if modified != app.modified:
+        ## Reload the model
+        app.model = Model(MODEL_CKPT)
+        app.modified = modified
     modified_str = datetime.datetime.fromtimestamp(app.modified).strftime("%Y-%m-%d %H:%M:%S")
     return jsonify({"songs": res, "version": app.version, 'model_date': modified_str})
 
