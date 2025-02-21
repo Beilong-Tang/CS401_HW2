@@ -1,14 +1,13 @@
 import os
-import sys
-sys.path.append(os.path.abspath(os.path.dirname(os.path.dirname(__file__))))
-from flask import Flask, request, jsonify
 import pickle
 import random
 import itertools
+import datetime
 from typing import List
 
-class Model:
+from flask import Flask, request, jsonify
 
+class Model:
     def __init__(self, rules_ckpt:str):
         self.model = pickle.load(open(rules_ckpt, "rb"))
     
@@ -39,13 +38,15 @@ class Model:
 
 app = Flask(__name__)
 app.model = Model("/ml_data/model.ckpt")
+app.modified = os.path.getmtime("/ml_data/model.ckpt")
 app.version = os.getenv("APP_VERSION", "unknown")
 
 @app.route("/api/recommender", methods=["POST"])
 def recommend():
     value = request.get_json()
     res = app.model(value['songs'])
-    return jsonify({"songs": res, "version": app.version, 'model_date': ""})
+    modified_str = datetime.datetime.fromtimestamp(app.modified).strftime("%Y-%m-%d %H:%M:%S")
+    return jsonify({"songs": res, "version": app.version, 'model_date': modified_str})
 
 if __name__ == "__main__":
     app.run(host='0.0.0.0',port=52006)
