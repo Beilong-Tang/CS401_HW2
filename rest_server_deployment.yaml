@@ -1,0 +1,20 @@
+---
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: playlist-recommender-deployment
+spec:
+  replicas: 2
+  selector:
+    matchLabels:
+      app: bltang-playlist-recommender
+  template:
+    metadata:
+      labels:
+        app: bltang-playlist-recommender
+    spec:
+      containers:
+      - name: playlist-recommender
+        image: beilongtang/playlists-recommender-system:0.1
+        ports:
+        - containerPort: 5008
