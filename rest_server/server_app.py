@@ -38,13 +38,15 @@ class Model:
         return list(random.choice(self.model)[1])
 
 app = Flask(__name__)
-app.model = Model("ckpt/sup_0.025_conf_0.7_rules.ckpt")
+app.model = Model("/ml_data/sup_0.025_conf_0.7_rules.ckpt")
 
 @app.route("/api/recommender", methods=["POST"])
 def recommend():
     value = request.get_json()
     res = app.model(value['songs'])
-    return jsonify({"recommend": res})
+    with open("/ml_data/test.html", "r") as file:
+        res = file.read()
+    return jsonify({"recommend": res, "webpage": res })
 
 if __name__ == "__main__":
     app.run(host='0.0.0.0',port=52006)

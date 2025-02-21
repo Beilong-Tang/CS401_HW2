@@ -1,0 +1,15 @@
+apiVersion: v1
+kind: PersistentVolumeClaim
+metadata:
+  name: project2-pvc-beilong
+  # namespace: beilong  # Make sure this is your correct namespace
+spec:
+  selector:
+    matchLabels:
+      namespace: beilong  # Match the label defined in PV
+  accessModes:
+    - ReadWriteMany
+  resources:
+    requests:
+      storage: 1Gi  # The PVC should request the same amount of storage as the PV
+  storageClassName: standard  # The same storage class as defined in the PV
