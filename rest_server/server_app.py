@@ -39,12 +39,13 @@ class Model:
 
 app = Flask(__name__)
 app.model = Model("/ml_data/sup_0.025_conf_0.7_rules.ckpt")
+app.version = os.getenv("APP_VERSION", "unknown")
 
 @app.route("/api/recommender", methods=["POST"])
 def recommend():
     value = request.get_json()
     res = app.model(value['songs'])
-    return jsonify({"recommend": res})
+    return jsonify({"songs": res, "version": app.version, 'model_date': ""})
 
 if __name__ == "__main__":
     app.run(host='0.0.0.0',port=52006)
