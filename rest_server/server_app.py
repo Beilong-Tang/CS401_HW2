@@ -39,7 +39,7 @@ class Model:
         return list(random.choice(self.model)[1])
 
 app = Flask(__name__)
-app.model = Model("../rules_generate/ckpt/sup_0.025_conf_0.7_rules.ckpt")
+app.model = Model("ckpt/sup_0.025_conf_0.7_rules.ckpt")
 
 @app.route("/api/recommender", methods=["POST"])
 def recommend():
