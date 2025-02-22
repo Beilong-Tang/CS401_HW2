@@ -13,5 +13,5 @@ def main():
     return render_template("index.html", hostname=args.hostname)
 
 
-app.run(port = args.port)
+app.run(port = args.web_port)
 
