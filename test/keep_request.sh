@@ -21,7 +21,6 @@ while true; do
     # Append the timestamp and output to the log file
     echo "[$TIMESTAMP]" >> "$cur_path/$LOGFILE"
     echo "$OUTPUT" >> "$cur_path/$LOGFILE"
-    echo "-------------------" >> "$LOGFILE"
 
     # Wait for the specified interval before running again
     sleep "$INTERVAL"
