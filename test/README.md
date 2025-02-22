@@ -4,7 +4,7 @@
 ### 1. Test Replicas 
 
 I tested the replicas changed from `3` to `2` running the `test_replicas_num_change.sh`
-to output the replicas num every one second.
+to output the replicas num every one second. _The detailed result can be found at `test_replicas_num_change.log`_.
 
 The result is like 
 ```
@@ -39,7 +39,16 @@ playlist-recommender-deployment   2/2     2            2           3h14m
 It can be estimated that the time it takes for argoCD to build the project is about `3min38s`, and the server is nerver down.
 
 
-### 2. Test 
+### 2. Test dataset updates
+
+In this test, we simulated the action of updating a dataset by modifying the 
+environment varialbe `DATA_PATH` in `ml-generator` in `deployment.yaml`. 
+We can choose between `"/ml_data/2023_spotify_ds1.csv"` and `"/ml_data/2023_spotify_ds2.csv"`. Note that all the datasets
+should be put in `/home/beilong/project2-pv2` for access because of PVC. 
+
+After modification, I then run the `keep_request.py` to keep sending request to the server. And if the dataset change is triggered 
+then the `ml_generate` should also be triggered, leading to an updated `model_date` in the response.
+
 
 
 
