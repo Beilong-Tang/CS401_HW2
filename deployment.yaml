@@ -5,7 +5,7 @@ kind: Deployment
 metadata:
   name: playlist-recommender-deployment
 spec:
-  replicas: 3
+  replicas: 2
   selector:
     matchLabels:
       app: bltang-playlist-recommender
