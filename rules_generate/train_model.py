@@ -12,6 +12,8 @@ MIN_SUP_RATIO=0.06
 MIN_CONF=0.3
 
 csv = pd.read_csv(DATA_PATH)
+
+print(f"Training model from {DATA_PATH}")
 ## Consult ChatGPT 
 ## This combines all the tracks corresponding to the
 itemSetList = csv.groupby('pid')['track_name'].apply(lambda x: list(set(x))).tolist()
