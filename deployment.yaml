@@ -17,6 +17,9 @@ spec:
       containers:
       - name: playlist-recommender
         image: beilongtang/playlists-recommender-system:0.2
+        env:
+        - name: APP_VERSION # DATA PATH
+          value: '0.2'  # Can change the dataset name to simulate update. 
         ports:
         - containerPort: 52006
         volumeMounts:

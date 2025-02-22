@@ -47,8 +47,6 @@ COPY . .
 # Expose the port that the application listens on.
 EXPOSE 8000
 
-ENV APP_VERSION=0.01
-
 ENV DATA_PATH="/ml_data/2023_spotify_ds1.csv"
 
 # Run the application.
