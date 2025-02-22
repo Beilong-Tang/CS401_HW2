@@ -1,3 +1,4 @@
+## This is the frontned server deployment
 ---
 apiVersion: apps/v1
 kind: Deployment
@@ -25,11 +26,13 @@ spec:
         - name: storage
           persistentVolumeClaim:
             claimName: project2-pvc-beilong
+
+## This is the backend server deployment
 ---
 apiVersion: batch/v1
 kind: Job
 metadata:
-  name: ml-generator
+  name: ml-generator-1
 spec:
   template:
     metadata:
@@ -38,7 +41,10 @@ spec:
     spec:
       containers:
       - name: ml-rules
-        image: beilongtang/ml_rules:0.1
+        image: beilongtang/ml_rules:0.3
+        env:
+        - name: DATA_PATH  # DATA PATH
+          value: "/ml_data/2023_spotify_ds1.csv"  # Can change the dataset name to simulate update. 
         volumeMounts:
         - mountPath: "/ml_data"
           name: storage
