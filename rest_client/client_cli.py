@@ -4,7 +4,7 @@ import requests
 def parse_args():
     p = argparse.ArgumentParser()
     p.add_argument("--songs", nargs="+", required = True, help = "List of songs to send to the recommender system. ")
-    p.add_argument("--hostname", default='http://localhost:52006/api/recommender', help = "The url of the recommender system.")
+    p.add_argument("--hostname", default='localhost', help = "The hostname of the recommender system.")
     return p.parse_args()
 
 def main(args):
