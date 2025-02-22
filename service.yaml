@@ -3,9 +3,11 @@ kind: Service
 metadata:
   name: playlist-recommender-service
 spec:
+  type: NodePort  # Add this line to change the service type to NodePort
   selector:
     app: bltang-playlist-recommender
   ports:
     - protocol: TCP
-      port: 52006
-      targetPort: 52006
+      port: 52006      # Port exposed internally within the cluster
+      targetPort: 52006 # Port on the Pod to forward traffic to
+      nodePort: 32000   # Optional: Specify a port in the range 30000-32767
