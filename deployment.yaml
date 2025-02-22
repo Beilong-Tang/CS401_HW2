@@ -47,7 +47,7 @@ spec:
         image: beilongtang/ml_rules:0.3
         env:
         - name: DATA_PATH  # DATA PATH
-          value: "/ml_data/2023_spotify_ds1.csv"  # Can change the dataset name to simulate update. 
+          value: "/ml_data/2023_spotify_ds2.csv"  # Can change the dataset name to simulate update. 
         volumeMounts:
         - mountPath: "/ml_data"
           name: storage
