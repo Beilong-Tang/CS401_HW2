@@ -35,7 +35,7 @@ spec:
 apiVersion: batch/v1
 kind: Job
 metadata:
-  name: ml-generator-1
+  name: ml-generator-2
 spec:
   template:
     metadata:

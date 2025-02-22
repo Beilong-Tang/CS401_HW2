@@ -46,9 +46,8 @@ environment varialbe `DATA_PATH` in `ml-generator` in `deployment.yaml`.
 We can choose between `"/ml_data/2023_spotify_ds1.csv"` and `"/ml_data/2023_spotify_ds2.csv"`. Note that all the datasets
 should be put in `/home/beilong/project2-pv2` for access because of PVC. 
 
-After modification, I then run the `keep_request.py` to keep sending request to the server. And if the dataset change is triggered 
+After modification, I then run the `keep_request.sh` to keep sending request to the server. And if the dataset change is triggered 
 then the `ml_generate` should also be triggered, leading to an updated `model_date` in the response.
 
-
-
-
+Note that, in order to let k8s rerun the rules_generator task, a specific identifier should be added at the back of `name`  
+to make sure that k8s builds a new pod for this task. Otherwise, nothing is going to happen.
