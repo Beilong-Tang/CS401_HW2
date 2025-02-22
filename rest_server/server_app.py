@@ -1,9 +1,11 @@
+from typing import List
+
 import os
 import pickle
 import random
 import itertools
-import datetime
-from typing import List
+# import datetime
+from datetime import timedelta, datetime
 
 from flask import Flask, request, jsonify
 
@@ -46,6 +48,11 @@ app.version = os.getenv("APP_VERSION", "unknown")
 
 @app.route("/api/recommender", methods=["POST"])
 def recommend():
+    def get_modified_strtime(timestamp) -> str:
+        utc_time = datetime.utcfromtimestamp(timestamp)
+        ## Add UTC+8
+        utc_time = utc_time + timedelta(hours=8)
+        return f"{utc_time}"
     value = request.get_json()
     res = app.model(value['songs'])
     modified = os.path.getmtime(MODEL_CKPT)
@@ -53,8 +60,7 @@ def recommend():
         ## Reload the model
         app.model = Model(MODEL_CKPT)
         app.modified = modified
-    modified_str = datetime.datetime.fromtimestamp(app.modified).strftime("%Y-%m-%d %H:%M:%S")
-    return jsonify({"songs": res, "version": app.version, 'model_date': modified_str})
+    return jsonify({"songs": res, "version": app.version, 'model_date': get_modified_strtime(app.modified)})
 
 if __name__ == "__main__":
     app.run(host='0.0.0.0',port=52006)

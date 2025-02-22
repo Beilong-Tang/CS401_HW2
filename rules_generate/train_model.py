@@ -4,11 +4,12 @@ from fpgrowth_py import fpgrowth
 import pickle ## Used for saving objects
 import time
 from datetime import timedelta
+import os 
 
 
-DATA_PATH="/home/datasets/spotify/2023_spotify_ds1.csv"
-MIN_SUP_RATIO=0.025
-MIN_CONF=0.7
+DATA_PATH= os.getenv("DATA_PATH", "/home/datasets/spotify/2023_spotify_ds1.csv")
+MIN_SUP_RATIO=0.06
+MIN_CONF=0.3
 
 csv = pd.read_csv(DATA_PATH)
 ## Consult ChatGPT 
@@ -23,10 +24,5 @@ time_finish = time.time() - time_start
 print(f"Finished FP Growth with time {str(timedelta(seconds=int(time_finish)))}")
 
 
-## Save them to the ckpt
-with open(f"ckpt/sup_{MIN_SUP_RATIO}_conf_{MIN_CONF}_freq.ckpt", "wb") as file: 
-    pickle.dump(freqItemSet, file)
-
-
-with open(f"ckpt/sup_{MIN_SUP_RATIO}_conf_{MIN_CONF}_rules.ckpt", "wb") as file: 
+with open(f"/ml_data/model.ckpt", "wb") as file: 
     pickle.dump(rules, file)
