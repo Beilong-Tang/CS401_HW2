@@ -19,7 +19,7 @@ def get_recommendation():
     url = f"http://{args.hostname}:52006/api/recommender"
     headers = {"Content-Type": "application/json"}
     response = requests.post(url, json=value, headers=headers)
-    print(response.text)
+    return response.text
 
 
 app.run('0.0.0.0', port = args.web_port)
