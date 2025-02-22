@@ -1,4 +1,4 @@
-from flask import Flask, request, jsonify, render_template
+from flask import Flask, request, render_template
 import requests
 
 import argparse
@@ -15,6 +15,9 @@ def main():
 
 @app.route("/get_recommendation", methods = ["POST"])
 def get_recommendation():
+    """
+    A wrapper to send request to the clusterIP locally
+    """
     value = request.get_json() # the return value
     url = f"http://{args.hostname}:52006/api/recommender"
     headers = {"Content-Type": "application/json"}
