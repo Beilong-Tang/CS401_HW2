@@ -1,0 +1,96 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Song Form</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 20px;
+        }
+        label {
+            display: block;
+            margin-bottom: 5px;
+        }
+        input, textarea {
+            width: 100%;
+            padding: 8px;
+            margin-bottom: 10px;
+            box-sizing: border-box;
+        }
+        button {
+            padding: 10px 20px;
+            background-color: #007BFF;
+            color: white;
+            border: none;
+            cursor: pointer;
+        }
+        button:hover {
+            background-color: #0056b3;
+        }
+        #result {
+            margin-top: 20px;
+            padding: 10px;
+            background-color: #f4f4f4;
+            border: 1px solid #ddd;
+        }
+    </style>
+</head>
+<body>
+    <h1>Submit Songs</h1>
+    <form id="songForm">
+        <label for="server_name">Server Name:</label>
+        <input type="text" id="server_name" name="server_name" required>
+
+        <label for="port">Port:</label>
+        <input type="number" id="port" name="port" required>
+
+        <label for="songs">Songs (comma-separated or Python list):</label>
+        <textarea id="songs" name="songs" rows="4" required></textarea>
+
+        <button type="submit">Submit</button>
+    </form>
+
+    <div id="result"></div>
+
+    <script>
+        document.getElementById('songForm').addEventListener('submit', async function(event) {
+            event.preventDefault();
+
+            const serverName = document.getElementById('server_name').value;
+            const port = document.getElementById('port').value;
+            const songsInput = document.getElementById('songs').value;
+
+            // Parse songs input (comma-separated or Python list)
+            let songs;
+            try {
+                songs = JSON.parse(songsInput); // Try parsing as Python list
+            } catch {
+                songs = songsInput.split(',').map(song => song.trim()); // Fallback to comma-separated
+            }
+
+            const data = { songs };
+
+            try {
+                const response = await fetch(`http://${serverName}:${port}/process_songs`, {
+                    method: 'POST',
+                    headers: {
+                        'Content-Type': 'application/json',
+                    },
+                    body: JSON.stringify(data),
+                });
+
+                if (!response.ok) {
+                    throw new Error(`Server returned ${response.status}: ${response.statusText}`);
+                }
+
+                const result = await response.json();
+                document.getElementById('result').innerText = JSON.stringify(result, null, 2);
+            } catch (error) {
+                document.getElementById('result').innerText = `Error: ${error.message}`;
+            }
+        });
+    </script>
+</body>
+</html>
