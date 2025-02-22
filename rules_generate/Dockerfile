@@ -49,7 +49,7 @@ EXPOSE 8000
 
 ENV APP_VERSION=0.01
 
-ENV DATA_PATH="/home/datasets/spotify/2023_spotify_ds1.csv"
+ENV DATA_PATH="/ml_data/2023_spotify_ds1.csv"
 
 # Run the application.
 CMD python3 train_model.py

@@ -7,7 +7,7 @@ from datetime import timedelta
 import os 
 
 
-DATA_PATH= os.getenv("DATA_PATH", "/home/datasets/spotify/2023_spotify_ds1.csv")
+DATA_PATH= os.getenv("DATA_PATH", "/ml_data/2023_spotify_ds1.csv")
 MIN_SUP_RATIO=0.06
 MIN_CONF=0.3
 

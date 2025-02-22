@@ -15,6 +15,35 @@ spec:
     spec:
       containers:
       - name: playlist-recommender
-        image: beilongtang/playlists-recommender-system:0.1
+        image: beilongtang/playlists-recommender-system:0.2
         ports:
         - containerPort: 52006
+        volumeMounts:
+        - mountPath: "/ml_data"
+          name: storage
+      volumes: 
+        - name: storage
+          persistentVolumeClaim:
+            claimName: project2-pvc-beilong
+---
+apiVersion: batch/v1
+kind: Job
+metadata:
+  name: ml-generator
+spec:
+  template:
+    metadata:
+      labels:
+        app: bltang-ml-generator
+    spec:
+      containers:
+      - name: ml-rules
+        image: beilongtang/ml_rules:0.1
+        volumeMounts:
+        - mountPath: "/ml_data"
+          name: storage
+      volumes:
+        - name: storage
+          persistentVolumeClaim:
+            claimName: project2-pvc-beilong
+      restartPolicy: OnFailure  # Valid for Jobs
