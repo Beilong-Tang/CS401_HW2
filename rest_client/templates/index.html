@@ -73,7 +73,7 @@
             const data = { songs };
 
             try {
-                    const response = await fetch(`http://${serverName}:${port}/api/recommender`, {
+                    const response = await fetch(`/get_recommendation`, {
                     method: 'POST',
                     headers: {
                         'Content-Type': 'application/json',
