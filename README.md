@@ -4,6 +4,14 @@ This repository serves as the HW2 to CS401:Cloud Computing at Duke Kunshan Unive
 
 [github](https://github.com/Beilong-Tang/CS401_HW2)
 
+## Introduction
+
+In this assignment, I created a CICD playlist recommendation system using flask, docker. k8s and argoCD. I made a 
+backend rules generator to generate recommendation rules on a dataset. I then made a frontend flask application to 
+load the backend model and make predictions. I also made a [web client](http://128.110.96.29:53000/) for testing. 
+I built docker containers for both applications and used k8s for automation. Finally I used the argoCD to 
+automatically build the k8s apps when the repository configuration changes. I tested the application and confirmed 
+that CICD is doing its job and the server is never offline.
 
 ## Part 1 Software Components
 
@@ -201,7 +209,7 @@ The result looks like
 ```
 
 We can see that at `[2025-02-22 18:20:05]`, there is an extra field `updated` in the response, which means that the k8s uses the updated container. 
-The time for CD is about `3min9s`, and the server is never down.
+The time for CD is about __3min9s__, and the server is never down.
 
 ## Conclusion
 
