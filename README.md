@@ -35,7 +35,9 @@ I made a CLI program `client_cli.py` which takes a hostname and a list of songs 
 server. 
 
 __For extra credits__. I made a client web app in Flask that sends request to the server at `web_app`.py
-This 
+This app requires the `hostname` of the backend recommendation server and a `web_port` which the app will be run on.
+My web client server is publically avaiable at ``
+Note that since the backend server might not be publically avaialbe, I made a 
 
 
 
