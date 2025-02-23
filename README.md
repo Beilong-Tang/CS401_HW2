@@ -13,6 +13,8 @@ I built docker containers for both applications and used k8s for automation. Fin
 automatically build the k8s apps when the repository configuration changes. I tested the application and confirmed 
 that CICD is doing its job and the server is never offline.
 
+I will then give a detailed explanation and instruction for each part, following a discussion on the test cases.
+
 ## Part 1 Software Components
 
 ### Playlist Rules Generator
