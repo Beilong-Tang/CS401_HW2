@@ -1,0 +1,299 @@
+metadata:
+  creationTimestamp: "2025-02-22T10:48:58Z"
+  generation: 400
+  managedFields:
+  - apiVersion: argoproj.io/v1alpha1
+    fieldsType: FieldsV1
+    fieldsV1:
+      f:spec:
+        .: {}
+        f:destination:
+          .: {}
+          f:namespace: {}
+          f:server: {}
+        f:project: {}
+        f:source:
+          .: {}
+          f:path: {}
+          f:repoURL: {}
+        f:syncPolicy:
+          .: {}
+          f:automated: {}
+      f:status:
+        .: {}
+        f:health: {}
+        f:sourceHydrator: {}
+        f:summary: {}
+        f:sync:
+          .: {}
+          f:comparedTo:
+            .: {}
+            f:destination: {}
+            f:source: {}
+    manager: argocd-server
+    operation: Update
+    time: "2025-02-22T10:48:58Z"
+  - apiVersion: argoproj.io/v1alpha1
+    fieldsType: FieldsV1
+    fieldsV1:
+      f:status:
+        f:controllerNamespace: {}
+        f:health:
+          f:lastTransitionTime: {}
+          f:status: {}
+        f:history: {}
+        f:operationState:
+          .: {}
+          f:finishedAt: {}
+          f:message: {}
+          f:operation:
+            .: {}
+            f:initiatedBy:
+              .: {}
+              f:automated: {}
+            f:retry:
+              .: {}
+              f:limit: {}
+            f:sync:
+              .: {}
+              f:revision: {}
+          f:phase: {}
+          f:startedAt: {}
+          f:syncResult:
+            .: {}
+            f:resources: {}
+            f:revision: {}
+            f:source:
+              .: {}
+              f:path: {}
+              f:repoURL: {}
+        f:reconciledAt: {}
+        f:resources: {}
+        f:sourceType: {}
+        f:summary:
+          f:images: {}
+        f:sync:
+          f:comparedTo:
+            f:destination:
+              f:namespace: {}
+              f:server: {}
+            f:source:
+              f:path: {}
+              f:repoURL: {}
+          f:revision: {}
+          f:status: {}
+    manager: argocd-application-controller
+    operation: Update
+    time: "2025-02-23T02:58:58Z"
+  name: bl-cs401-hw2
+  namespace: argocd
+  resourceVersion: "1851823"
+  uid: bce0b2a9-25ea-485f-81d1-1ee453c51138
+spec:
+  destination:
+    namespace: beilong
+    server: https://kubernetes.default.svc
+  project: beilong-project
+  source:
+    path: .
+    repoURL: https://github.com/Beilong-Tang/CS401_HW2.git
+  syncPolicy:
+    automated: {}
+status:
+  controllerNamespace: argocd
+  health:
+    lastTransitionTime: "2025-02-23T01:20:06Z"
+    status: Healthy
+  history:
+  - deployStartedAt: "2025-02-22T10:48:59Z"
+    deployedAt: "2025-02-22T10:48:59Z"
+    id: 0
+    initiatedBy:
+      automated: true
+    revision: 3289779ef712f9aef2f453c69cafc9b34e0db985
+    source:
+      path: .
+      repoURL: https://github.com/Beilong-Tang/CS401_HW2.git
+  - deployStartedAt: "2025-02-22T10:52:59Z"
+    deployedAt: "2025-02-22T10:53:00Z"
+    id: 1
+    initiatedBy:
+      automated: true
+    revision: 86e095637f5dbcf6a1e077f2ecaa1f3931217f60
+    source:
+      path: .
+      repoURL: https://github.com/Beilong-Tang/CS401_HW2.git
+  - deployStartedAt: "2025-02-22T12:48:41Z"
+    deployedAt: "2025-02-22T12:48:42Z"
+    id: 2
+    initiatedBy:
+      automated: true
+    revision: cd6211511f2800577a1a7caf7e4e1e8f1500eea0
+    source:
+      path: .
+      repoURL: https://github.com/Beilong-Tang/CS401_HW2.git
+  - deployStartedAt: "2025-02-22T12:52:59Z"
+    deployedAt: "2025-02-22T12:53:00Z"
+    id: 3
+    initiatedBy:
+      automated: true
+    revision: f90a1acf43371edaaf048c14f356ab777327dad2
+    source:
+      path: .
+      repoURL: https://github.com/Beilong-Tang/CS401_HW2.git
+  - deployStartedAt: "2025-02-22T13:10:59Z"
+    deployedAt: "2025-02-22T13:11:00Z"
+    id: 4
+    initiatedBy:
+      automated: true
+    revision: 4b3471a921a565b6e30c3014a42ec6fdd4489eb7
+    source:
+      path: .
+      repoURL: https://github.com/Beilong-Tang/CS401_HW2.git
+  - deployStartedAt: "2025-02-22T13:34:59Z"
+    deployedAt: "2025-02-22T13:34:59Z"
+    id: 5
+    initiatedBy:
+      automated: true
+    revision: 87c44b2bd55d995a095639e662d7aba896d643de
+    source:
+      path: .
+      repoURL: https://github.com/Beilong-Tang/CS401_HW2.git
+  - deployStartedAt: "2025-02-22T14:46:11Z"
+    deployedAt: "2025-02-22T14:46:12Z"
+    id: 6
+    initiatedBy:
+      automated: true
+    revision: cc4911f0a6ca17b01fa79b8b42cdb3aad067d6c8
+    source:
+      path: .
+      repoURL: https://github.com/Beilong-Tang/CS401_HW2.git
+  - deployStartedAt: "2025-02-23T01:19:59Z"
+    deployedAt: "2025-02-23T01:20:00Z"
+    id: 7
+    initiatedBy:
+      automated: true
+    revision: 1e876dc970097724503674cd985c187f74f7a68b
+    source:
+      path: .
+      repoURL: https://github.com/Beilong-Tang/CS401_HW2.git
+  operationState:
+    finishedAt: "2025-02-23T01:20:00Z"
+    message: successfully synced (all tasks run)
+    operation:
+      initiatedBy:
+        automated: true
+      retry:
+        limit: 5
+      sync:
+        revision: 1e876dc970097724503674cd985c187f74f7a68b
+    phase: Succeeded
+    startedAt: "2025-02-23T01:19:59Z"
+    syncResult:
+      resources:
+      - group: batch
+        hookPhase: Succeeded
+        kind: Job
+        message: ignored (requires pruning)
+        name: ml-generator-1
+        namespace: beilong
+        status: PruneSkipped
+        syncPhase: Sync
+        version: v1
+      - group: ""
+        hookPhase: Running
+        kind: PersistentVolumeClaim
+        message: persistentvolumeclaim/project2-pvc-beilong unchanged
+        name: project2-pvc-beilong
+        namespace: beilong
+        status: Synced
+        syncPhase: Sync
+        version: v1
+      - group: ""
+        hookPhase: Running
+        kind: Service
+        message: service/playlist-recommender-service unchanged
+        name: playlist-recommender-service
+        namespace: beilong
+        status: Synced
+        syncPhase: Sync
+        version: v1
+      - group: apps
+        hookPhase: Running
+        kind: Deployment
+        message: deployment.apps/playlist-recommender-deployment configured
+        name: playlist-recommender-deployment
+        namespace: beilong
+        status: Synced
+        syncPhase: Sync
+        version: v1
+      - group: batch
+        hookPhase: Running
+        kind: Job
+        message: job.batch/ml-generator-2 unchanged
+        name: ml-generator-2
+        namespace: beilong
+        status: Synced
+        syncPhase: Sync
+        version: v1
+      revision: 1e876dc970097724503674cd985c187f74f7a68b
+      source:
+        path: .
+        repoURL: https://github.com/Beilong-Tang/CS401_HW2.git
+  reconciledAt: "2025-02-23T02:58:58Z"
+  resources:
+  - health:
+      status: Healthy
+    kind: PersistentVolumeClaim
+    name: project2-pvc-beilong
+    namespace: beilong
+    status: Synced
+    version: v1
+  - health:
+      status: Healthy
+    kind: Service
+    name: playlist-recommender-service
+    namespace: beilong
+    status: Synced
+    version: v1
+  - group: apps
+    health:
+      status: Healthy
+    kind: Deployment
+    name: playlist-recommender-deployment
+    namespace: beilong
+    status: Synced
+    version: v1
+  - group: batch
+    health:
+      status: Healthy
+    kind: Job
+    name: ml-generator-1
+    namespace: beilong
+    requiresPruning: true
+    status: OutOfSync
+    version: v1
+  - group: batch
+    health:
+      status: Healthy
+    kind: Job
+    name: ml-generator-2
+    namespace: beilong
+    status: Synced
+    version: v1
+  sourceHydrator: {}
+  sourceType: Directory
+  summary:
+    images:
+    - beilongtang/ml_rules:0.3
+    - beilongtang/playlists-recommender-system:0.4
+  sync:
+    comparedTo:
+      destination:
+        namespace: beilong
+        server: https://kubernetes.default.svc
+      source:
+        path: .
+        repoURL: https://github.com/Beilong-Tang/CS401_HW2.git
+    revision: a1df8524a7a71488b54f37449a30d4e28d947ce8
+    status: OutOfSync
