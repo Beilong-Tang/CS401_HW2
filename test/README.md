@@ -79,7 +79,7 @@ The result looks like:
 ```
 
 We can tell that the `songs` and `model_date` changes at `[2025-02-22 07:47:28]`. My server will actually check if the model checkpoint is updated
-for every request, and used the most updated version. Therefore, we can tell that the CICD time is about `2min3s`. 
+for every request, and used the most updated version. Therefore, we can tell that the CD time is about `2min3s`. 
 
 ### 3. Test Container update (code update)
 
@@ -100,3 +100,18 @@ bash keep_request.sh test_container_update.log
 ```
 
 to check if the server gives me back the new model. 
+
+The result looks like
+
+```log
+[2025-02-22 18:16:56]
+{"model_date":"2025-02-22 22:47:25.285238","songs":["DNA.","Congratulations","Bad and Boujee (feat. Lil Uzi Vert)","T-Shirt","Slippery (feat. Gucci Mane)","goosebumps","XO TOUR Llif3","Mask Off","HUMBLE."],"version":"0.2"}
+.
+.
+.
+[2025-02-22 18:20:05]
+{"model_date":"2025-02-22 22:47:25.285238","songs":["DNA.","Congratulations","Bad and Boujee (feat. Lil Uzi Vert)","T-Shirt","Slippery (feat. Gucci Mane)","goosebumps","XO TOUR Llif3","Mask Off","HUMBLE."],"updated":"yes","version":"0.4"}
+```
+
+We can see that at `[2025-02-22 18:20:05]`, there is an extra field `updated` in the response, which means that the k8s uses the updated container. 
+The time for CD is about `3min9s`. 
