@@ -60,7 +60,7 @@ def recommend():
         ## Reload the model
         app.model = Model(MODEL_CKPT)
         app.modified = modified
-    return jsonify({"songs": res, "version": app.version, 'model_date': get_modified_strtime(app.modified)})
+    return jsonify({"songs": res, "version": app.version, 'model_date': get_modified_strtime(app.modified), "updated": "yes"})
 
 if __name__ == "__main__":
     app.run(host='0.0.0.0',port=52006)

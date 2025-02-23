@@ -4,7 +4,7 @@ cur_path=$(pwd)
 cd ../rest_client
 
 # Define the log file
-LOGFILE="test_dataset_update.log"
+LOGFILE=$1
 
 > "$cur_path/$LOGFILE"
 
