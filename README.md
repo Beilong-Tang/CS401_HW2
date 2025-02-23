@@ -203,7 +203,7 @@ The result looks like
 We can see that at `[2025-02-22 18:20:05]`, there is an extra field `updated` in the response, which means that the k8s uses the updated container. 
 The time for CD is about `3min9s`, and the server is never down.
 
--- 
+## Conclusion
 
 Overall, for each test cases, the CD takes about 3mins, and the application never remains offline.
 
