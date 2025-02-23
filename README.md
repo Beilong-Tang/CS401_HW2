@@ -51,7 +51,37 @@ Note that since the backend server might not be publically avaialbe, I made a wo
 to the backend server to go through the web client application server, and the client will send a request to backend 
 server's internal address. The client web app backend then sends it back to the frontend. 
 
-## Part 2
+## Part 2 CICD
+
+### 1. Create Docker image
+
+For _ML container_, refer to `rules_generate/start_docker` for building the docker image as well as running it in a container. 
+
+For _frontend container_, refer to `rest_server/start_docker.sh`. 
+
+Note that I added a volume mounting host path `/home/beilong/project2-pv2` to `/ml_data`. This ensures both containers can write and 
+read files from the same directory.
+
+
+### 2. Configure k8s deployment and service
+
+Please refer to `deployment.yaml` for deployment.
+In this deployment file, I created two deployment configuration. One is for frontend playlist system, and other one is 
+for ml generator. Note that for ml generator, since it only needs to run once when the dataset is updated. I make the type to 
+be a Job instead of Deployment because a Job only runs once while the Deployment runs infinite times. This two 
+configs use the PVC config specified below for reading and writing data. 
+
+Please refore to `service.yaml` for service.
+
+#### Sharing the model over a Persistent Volume
+
+Please refer to `persist_volume_chain.yaml` for pvc config.
+
+### 3. Configure Automatic Deployment in ArgoCD
+
+Please refer to `argocd.sh` for the command to create argoCD that checks the update of the repository. 
+The ArgoCD YAML file can be found at 
+
 
 ## Notes
 
