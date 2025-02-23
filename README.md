@@ -34,12 +34,24 @@ Please refer to `rest_client/` for more details.
 I made a CLI program `client_cli.py` which takes a hostname and a list of songs to send to the 
 server. 
 
+For example, 
+
+```shell
+python3 client_cli.py --songs "Watch Out" "Black Beatles" --hostname <hostname to the backend server>
+```
+
+#### Rest Web Client (Extra Credit)
+
 __For extra credits__. I made a client web app in Flask that sends request to the server at `web_app`.py
 This app requires the `hostname` of the backend recommendation server and a `web_port` which the app will be run on.
-My web client server is publically avaiable at ``
-Note that since the backend server might not be publically avaialbe, I made a 
 
+My web client server is publically avaiable at [http://128.110.96.29:53000/](http://128.110.96.29:53000/). 
 
+Note that since the backend server might not be publically avaialbe, I made a workaround by dealing the request 
+to the backend server to go through the web client application server, and the client will send a request to backend 
+server's internal address. The client web app backend then sends it back to the frontend. 
+
+## Part 2
 
 ## Notes
 
