@@ -36,7 +36,7 @@ playlist-recommender-deployment   2/2     2            2           3h14m
 
 ```
 
-It can be estimated that the time it takes for argoCD to build the project is about `3min38s`, and the server is nerver down.
+It can be estimated that the time it takes for argoCD to build the project is about __3min38s__, and the server is nerver down.
 
 
 ### 2. Test dataset updates
@@ -79,7 +79,7 @@ The result looks like:
 ```
 
 We can tell that the `songs` and `model_date` changes at `[2025-02-22 07:47:28]`. My server will actually check if the model checkpoint is updated
-for every request, and used the most updated version. Therefore, we can tell that the CD time is about `2min3s`. 
+for every request, and used the most updated version. Therefore, we can tell that the CD time is about __2min3s__, and the server is never down.
 
 ### 3. Test Container update (code update)
 
@@ -114,4 +114,4 @@ The result looks like
 ```
 
 We can see that at `[2025-02-22 18:20:05]`, there is an extra field `updated` in the response, which means that the k8s uses the updated container. 
-The time for CD is about `3min9s`. 
+The time for CD is about `3min9s`, and the server is never down.
